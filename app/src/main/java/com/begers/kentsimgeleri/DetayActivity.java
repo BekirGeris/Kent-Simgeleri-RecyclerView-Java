@@ -2,6 +2,7 @@ package com.begers.kentsimgeleri;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -20,6 +21,11 @@ public class DetayActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        Intent intent = getIntent();
+        Landmark selectedLandmark = (Landmark) intent.getSerializableExtra("landmark");
 
+        binding.nametext.setText(selectedLandmark.getName());
+        binding.countryText.setText(selectedLandmark.getCountry());
+        binding.imageView.setImageResource(selectedLandmark.getImage());
     }
 }

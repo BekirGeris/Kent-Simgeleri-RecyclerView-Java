@@ -1,6 +1,8 @@
 package com.begers.kentsimgeleri;
 
-public class Landmark {
+import java.io.Serializable;
+
+public class Landmark implements Serializable {
 
     private String name;
 

@@ -3,9 +3,11 @@ package com.begers.kentsimgeleri;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.begers.kentsimgeleri.databinding.ActivityDetayBinding;
@@ -42,6 +44,21 @@ public class MainActivity extends AppCompatActivity {
         data.add(kizKulesi);
         data.add(londonBridge);
         data.add(pisa);
+        data.add(ayasofya);
+        data.add(galataKulesi);
+        data.add(kizKulesi);
+        data.add(londonBridge);
+        data.add(pisa);
+        data.add(ayasofya);
+        data.add(galataKulesi);
+        data.add(kizKulesi);
+        data.add(londonBridge);
+        data.add(pisa);
+        data.add(ayasofya);
+        data.add(galataKulesi);
+        data.add(kizKulesi);
+        data.add(londonBridge);
+        data.add(pisa);
 
         //adapter -- listView -- mapping
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
@@ -49,5 +66,13 @@ public class MainActivity extends AppCompatActivity {
                 );
         binding.listView.setAdapter(arrayAdapter);
 
+        binding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, DetayActivity.class);
+                intent.putExtra("landmark", data.get(position));
+                startActivity(intent);
+            }
+        });
     }
 }
