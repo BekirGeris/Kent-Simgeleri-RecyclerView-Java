@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
 
 public class DetayActivity extends AppCompatActivity {
 
+    Singleton singleton;
     private ActivityDetayBinding binding; //binding kullanılarak view öğelerimize erişim sağlayacağiz.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +22,13 @@ public class DetayActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        /*
-        Intent intent = getIntent();
-        Landmark selectedLandmark = (Landmark) intent.getSerializableExtra("landmark");
+        singleton = Singleton.getInstance();
+        Landmark selectedLandmark = singleton.getSentLandmark();
 
         binding.nametext.setText(selectedLandmark.getName());
         binding.countryText.setText(selectedLandmark.getCountry());
         binding.imageView.setImageResource(selectedLandmark.getImage());
-         */
+
 
     }
 }

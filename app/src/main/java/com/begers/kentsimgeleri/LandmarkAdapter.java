@@ -1,5 +1,6 @@
 package com.begers.kentsimgeleri;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class LandmarkAdapter extends RecyclerView.Adapter<LandmarkAdapter.LandmarkHolder> {
 
+    private Singleton singleton;
     List<Landmark> data;
 
     public LandmarkAdapter(List<Landmark> data) {
@@ -30,6 +32,18 @@ public class LandmarkAdapter extends RecyclerView.Adapter<LandmarkAdapter.Landma
     @Override
     public void onBindViewHolder(@NonNull LandmarkHolder holder, int position) {  //layout içerisinde göstermek istediğimiz veriler burada gösterilir.
         holder.binding.recyclerViewTextView.setText(data.get(position).getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(holder.itemView.getContext(), DetayActivity.class);
+
+                singleton = Singleton.getInstance();
+                singleton.setSentLandmark(data.get(position));
+
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
