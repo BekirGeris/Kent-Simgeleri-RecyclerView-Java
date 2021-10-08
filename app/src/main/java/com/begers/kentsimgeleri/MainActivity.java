@@ -2,6 +2,7 @@ package com.begers.kentsimgeleri;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Build;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(londonBridge);
         data.add(pisa);
 
+        /*
         //adapter -- listView -- mapping
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
                 data.stream().map(landmark -> landmark.getName()).collect(Collectors.toList())
@@ -74,5 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+         */
+
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LandmarkAdapter landmarkAdapter = new LandmarkAdapter(data);
+        binding.recyclerView.setAdapter(landmarkAdapter);
     }
 }
